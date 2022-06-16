@@ -1,4 +1,5 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import tw from "twrnc";
 import { Icon } from "@rneui/base";
 
@@ -8,7 +9,7 @@ const NavOptions = () => {
       id: "123",
       title: "Get a ride",
       image: "https://links.papareact.com/3pn",
-      screen: "MapScreen",
+      screen: "Mapscreen",
     },
     {
       id: "456",
@@ -18,13 +19,17 @@ const NavOptions = () => {
     },
   ];
 
+  const navigator = useNavigation();
+
   return (
     <FlatList
       data={data}
       horizontal
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <TouchableOpacity style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40`}>
+        <TouchableOpacity onPress={()=>{
+          navigator.navigate(item.screen)
+        }} style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40`}>
           <View>
             <Image
               style={{ width: 120, height: 120, resizeMode: "contain" }}
