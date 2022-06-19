@@ -26,10 +26,9 @@ const HomeScreen = () => {
               fontSize: 18,
             },
           }}
-          placeholder="Where to?"
+          placeholder="Where from?"
           fetchDetails={true}
           onPress={(data, details = null) => {
-            console.log(data, details);
             dispatch(setOrigin({
               location: details.geometry.location,
               description: data.description

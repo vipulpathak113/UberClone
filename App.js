@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from "react-native";
+import { StyleSheet, StatusBar,KeyboardAvoidingView, Platform } from "react-native";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import HomeScreen from "./screens/HomeScreen";
@@ -15,6 +15,7 @@ export default function App() {
       <SafeAreaProvider>
         <StatusBar barStyle="dark-content"/>
         <NavigationContainer>
+          <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS=="ios"?"padding":"height"}>
           <Stack.Navigator>
             <Stack.Screen
               name="HomeScreen"
@@ -27,6 +28,7 @@ export default function App() {
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
+          </KeyboardAvoidingView>
         </NavigationContainer>
       </SafeAreaProvider>
     </Provider>
